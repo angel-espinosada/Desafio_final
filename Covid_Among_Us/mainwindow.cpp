@@ -2,7 +2,7 @@
 #include "ui_mainwindow.h"
 #include <QGraphicsScene>
 #include <QGraphicsPixmapItem>
-
+#include<QDebug>
 
 
 MainWindow::MainWindow(QWidget *parent)
@@ -16,20 +16,14 @@ MainWindow::MainWindow(QWidget *parent)
     ui->graphicsView->setScene(portada);
 
 portada->setSceneRect(0, 0, 800, 600);
-    QPixmap bgPixmap(":/fondo_principal.png");
+
+
+QPixmap bgPixmap(":/imagenes/fondo_principal.png");
     if (bgPixmap.isNull()) {
         qDebug() << "No se pudo cargar la imagen";
     }
 QGraphicsPixmapItem *bgItem = portada->addPixmap(bgPixmap);
 bgItem->setZValue(-100); // Asegura que quede al fondo
-//portada->setBackgroundBrush(QColor("#b40000"));
-
-//portada->addRect(0, 0, 640, 300,
-                // QPen(QColor("#0000FF"), 2));
-
-
-
-
 
 
 // Botones
@@ -62,7 +56,13 @@ void MainWindow::crearBoton(const QString &texto, int y, int nivel)
 
 
     // Posición ABSOLUTA: dentro del rectángulo
-    label->adjustSize(); // x = 250 (inicio rect) + margen, y = y + margen
+    double anchotexto=label->boundingRect().width();
+    double altotexto=label->boundingRect().height();
+    double xcentro=150+(300/2)-(anchotexto/2);
+    double ycentro= y+(60/2)-(altotexto/2);
+    label->setPos(xcentro,ycentro);
+    label->setZValue(1);;
+
     //Añadir directamente a la escena
     portada->addItem(rect);
     portada->addItem(label);

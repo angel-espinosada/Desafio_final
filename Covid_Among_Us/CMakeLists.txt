@@ -12,7 +12,11 @@ qt_add_executable(Covid_Among_Us
     mainwindow.h
     mainwindow.ui
     imagenes/imagenes.qrc
-    imagenes/fondo_principal.png
+    impostor.h impostor.cpp
+    tripulante.h tripulante.cpp
+    personaje.h personaje.cpp
+    vitamina.h vitamina.cpp
+
 )
 
 target_link_libraries(Covid_Among_Us
