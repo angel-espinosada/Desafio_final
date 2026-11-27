@@ -3,6 +3,7 @@
 #include <QGraphicsScene>
 #include <QGraphicsPixmapItem>
 #include<QDebug>
+#include <QPushbutton>
 
 
 MainWindow::MainWindow(QWidget *parent)
@@ -11,7 +12,6 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
     setWindowTitle("Among Us Covid_19");
-
      portada = new QGraphicsScene(this);
     ui->graphicsView->setScene(portada);
 
@@ -27,10 +27,10 @@ bgItem->setZValue(-100); // Asegura que quede al fondo
 
 
 // Botones
-crearBoton("Nivel 1", 100, 1);
-crearBoton("Nivel 2", 150, 2);
-crearBoton("Nivel 3", 200, 3);
-crearBoton("Salir",   250, 4);
+
+connect(crearBoton("Nivel 1", 100), &QPushButton::clicked, this, &MainWindow::Nivel1);
+connect(crearBoton("Nivel 2", 170), &QPushButton::clicked, this, &MainWindow::Nivel2);
+connect(crearBoton("Salir",   240), &QPushButton::clicked, this, &MainWindow::salir);
 
 }
 
@@ -40,6 +40,17 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
+QPushButton *MainWindow::crearboton(const QString &texto, int y)
+{
+    QPushButton *botn= new QPushButton(texto);
+    botn->setGeometry(150, y,300, 60);
+    botn->setStyleSheet("background-color: red; color: white;"
+                        "border: 3px solid white; font: 22pt 'Arial';");
+    portada->addWidget(botn);
+    return botn;
+}
+
+/*
 void MainWindow::crearBoton(const QString &texto, int y, int nivel)
 {
     // Rectángulo del botón
@@ -67,18 +78,4 @@ void MainWindow::crearBoton(const QString &texto, int y, int nivel)
     portada->addItem(rect);
     portada->addItem(label);
 }
-
-void MainWindow::Nivel1()
-{
-
-}
-
-void MainWindow::Nivel2()
-{
-
-}
-
-void MainWindow::salir()
-{
-
-}
+*/

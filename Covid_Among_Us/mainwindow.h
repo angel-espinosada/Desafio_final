@@ -2,7 +2,9 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include<QPushButton>
 class QGraphicsScene;
+
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -21,7 +23,7 @@ public:
 private:
     Ui::MainWindow *ui;
     QGraphicsScene *portada = nullptr;
-    void crearBoton(const QString &texto, int y, int nivel);
+    QPushButton* crearBoton(const QString &texto, int y);
 
 private slots:
     void Nivel1();
