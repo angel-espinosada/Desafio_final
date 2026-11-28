@@ -3,7 +3,7 @@
 #include <QGraphicsScene>
 #include <QGraphicsPixmapItem>
 #include<QDebug>
-#include <QPushbutton>
+#include <QPushButton>
 
 
 MainWindow::MainWindow(QWidget *parent)
@@ -40,7 +40,7 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-QPushButton *MainWindow::crearboton(const QString &texto, int y)
+QPushButton *MainWindow::crearBoton(const QString &texto, int y)
 {
     QPushButton *botn= new QPushButton(texto);
     botn->setGeometry(150, y,300, 60);
@@ -49,6 +49,27 @@ QPushButton *MainWindow::crearboton(const QString &texto, int y)
     portada->addWidget(botn);
     return botn;
 }
+
+void MainWindow::Nivel1()
+{
+    escena = new QGraphicsScene(this);
+    escena->setSceneRect(0, 0, 800, 600);
+    ui->graphicsView->setScene(escena);
+    escena->setBackgroundBrush(Qt::darkGray);   // fondo provisional
+}
+
+void MainWindow::Nivel2()
+{
+    qDebug() << "Nivel 2";
+}
+
+void MainWindow::salir()
+{
+    qDebug() << "Nivel 2";
+}
+
+
+
 
 /*
 void MainWindow::crearBoton(const QString &texto, int y, int nivel)

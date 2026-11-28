@@ -23,6 +23,7 @@ public:
 private:
     Ui::MainWindow *ui;
     QGraphicsScene *portada = nullptr;
+      QGraphicsScene *escena = nullptr;
     QPushButton* crearBoton(const QString &texto, int y);
 
 private slots:
